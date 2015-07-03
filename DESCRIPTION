@@ -11,11 +11,6 @@ LazyData: true
 Imports:
     dplyr,
     car,
-    ggplot2,
-    mgcv,
-    plyr,
-    reshape2
 Suggests:
-    visreg,
     knitr
 VignetteBuilder: knitr

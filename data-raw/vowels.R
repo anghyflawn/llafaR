@@ -50,11 +50,6 @@ pre.means <- filter(vowels, context != 'cluster', c.hch.ratio < 100) %>%
                        mean.c.dur = mean(c1.dur, na.rm = TRUE),
                        mean.pre.dur = mean(c1.preasp.dur, na.rm = TRUE))
 
-pre.shares.melted <- melt(pre.means, id.vars=('c1'), measure.vars=c('mean.hc', 'mean.c', 'mean.ch'))
-pre.durs.melted <- melt(pre.means, id.vars=('c1'), measure.vars=c('mean.pre.dur', 'mean.c.dur', 'mean.post.dur'))
-
-pre.shares.plot <- ggplot(pre.shares.melted, aes(c1, value, fill=variable))+geom_bar(stat='identity')+coord_flip()
-pre.durs.plot <- ggplot(pre.durs.melted, aes(c1, value, fill=variable))+geom_bar(stat='identity')+coord_flip()
 
 vowels$final.closed <- recode(vowels$word,
                           'c("llipa", "gwella", "gyrru", "honni", "suddo", "colli", "pysgota", "tyfu", "plygu", "felly", "llogi", "siglo", "boddi", "ysbyty", "torri", "heddlu", "hybu", "cyfle", "hwnnw", "bore", "cwta", "cludo", "llety", "Guto", "curo", "geni", "copi", "trefnu", "lludw", "pobi", "prynu", "codi")=F;
@@ -74,8 +69,8 @@ v2.df <- select(vowels, speaker, v2, v2.f1, v2.f2, v2.dur, v2h.dur)
 v2.df$pos <- 'v2'
 v2.df$context <- 'posttonic'
 
-vowels.all <- rbind(plyr::rename(v1.df, c('v1'='v', 'v1.f1'='v.f1', 'v1.f2'='v.f2', 'v1.dur'='v.dur', 'v1h.dur'='vh.dur')),
-              plyr::rename(v2.df, c('v2'='v', 'v2.f1'='v.f1', 'v2.f2'='v.f2', 'v2.dur'='v.dur', 'v2h.dur'='vh.dur')))
+vowels.all <- rbind(rename(v1.df, v=v1, v.f1=v1.f1, v.f2=v1.f2, v.dur=v1.dur, vh.dur=v1h.dur),
+                    rename(v2.df, v=v2, v.f1=v2.f1, v.f2=v2.f2, v.dur=v2.dur, vh.dur=v2h.dur))
 
 vowel.stats <- vowels.all %>%
                group_by(speaker) %>%
