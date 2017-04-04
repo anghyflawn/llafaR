@@ -2,7 +2,7 @@
 
 This is an R package containing the data extracted from a dataset on
 Welsh vowels collected by [Pavel Iosad](http://anghyflawn.github.io),
-available [soon] on [Edinburgh DataShare](http://datashare.is.ed.ac.uk).
+available on [Open Science Framework](http://doi.org/10.17605/OSF.IO/HD3BZ).
 
 To use this
 
